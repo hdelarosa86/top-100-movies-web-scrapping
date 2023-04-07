@@ -9,6 +9,8 @@ soup = BeautifulSoup(web_page_data, 'html.parser')
 movie_titles_list = soup.select(selector='.listicle-item-content p:nth-child(2) a')
 text_list = [titles.getText()[24:] for titles in movie_titles_list]
 
+count = 1
 with open('top-100-movies.txt', 'w') as file:
     for items in reversed(text_list):
-        file.write(f'{items}\n')
+        file.write(f'{count}) {items}\n')
+        count += 1
